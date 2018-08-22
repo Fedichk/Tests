@@ -3,9 +3,14 @@ version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
 
-task testJar(type: Jar, depndesOn: testClasses) {
+task testJar(type: Jar) {
     classifier = 'tests'
     from sourceSets.test.output
+}
+
+task testSourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'testSources'
+    from sourceSets.test.allSource
 }
 
 sourceCompatibility = 1.8
