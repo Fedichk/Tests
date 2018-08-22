@@ -1,0 +1,27 @@
+group 'tests'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+task testJar(type: Jar, depndesOn: testClasses) {
+    classifier = 'tests'
+    from sourceSets.test.output
+}
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'org.asynchttpclient', name: 'async-http-client', version: '2.5.2'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.6'
+
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.2.0'
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.2.0'
+    testCompile group: 'org.junit.platform', name: 'junit-platform-launcher', version: '1.2.0'
+}
+
+
+
